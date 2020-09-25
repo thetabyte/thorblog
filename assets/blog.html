@@ -3,28 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://use.fontawesome.com/1f736332cf.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital@1&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/style.css">
+    
+
+
+
     <title>Thorblog</title>
 </head>
 <body>
     <header>
         <div class="logo">
             <h1 class="logo-text"><span>Bifrost</span>Daily</h1>
-            <ul class="nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <!--<li><a href="#"></a>Sign Up</li>
-                <li><a href="#"></a>Login</li>-->
-                
-                <li>
-                    <a href="#">Ilsa Foust</a> <!--Locked in user, above buttons commented out to focus on styling user item-->
-                    <ul>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </li> 
-            </ul>
         </div>
+         <i class="fa fa-bars menu-toggle"></i>   
+        <ul class="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <!--<li><a href="#"></a>Sign Up</li>
+            <li><a href="#"></a>Login</li>-->
+            
+            <li>
+                <a href="#">
+                    <i class="fa fa-user"></i>
+                    Ilsa Foust <!--Locked in user, above buttons commented out to focus on styling user item:the name 'ilsa faust' or 'dashboard' in the dropdown is not aligned properly probably because of char length affecting padding? But looks nice-->
+                    <i class="fa fa-chevron-down" style="font-size: .8em;"></i> <!--find solution to styling ideally should be in style sheet target ul list and place styling-->
+                </a> 
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#" class="logout">Logout</a></li>
+                </ul>
+            </li> 
+        </ul>
     </header>
+
+    <!--JQUERY-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+    <!--script-->
+    <script src="js/script.js"></script>
+
 </body>
 </html>

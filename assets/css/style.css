@@ -1,0 +1,142 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+    background: #fff;
+    font-family: 'lora';
+}
+
+header{
+    background: #5da7a7;
+    height: 66px;
+}
+
+header *{
+    color: white;
+}
+
+header .logo{
+    float: left;
+    /*border: 1px solid red; used to align the 'bifrost daily' h1 element properly*/
+    height: inherit;
+    margin-left: 2em;
+}
+
+header .logo-text{
+    margin: 9px;
+    font-family: 'lora', sans-serif; /*lora or karla- lora looks nice in header*/
+}
+
+header .logo-text span{
+    color: rgb(21, 128, 21);
+}
+
+header ul{
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    list-style: none; /*removes bullet style dots*/ 
+    /*border: 1px solid red; used as partial container to observe changes*/
+}
+
+header ul li{
+    float: left;
+    position: relative;
+}
+
+header ul li ul {
+    position: absolute;
+    top: 66px;
+    right: 0px;
+    left: 0px; /*added this to help with putting dashboard dropdown in line see html comment*/
+    width: 180px;
+    display: none;
+}
+
+header ul li:hover ul {
+    display: block;
+}
+
+header ul li ul li {
+    width: 100%;
+}
+
+header ul li ul a {
+    padding: 10px;
+    background: white;
+    color: #444;
+}
+
+header ul li ul a.logout {
+    color: red;
+}
+
+header ul li ul a:hover {
+    background: #57acac;
+}
+
+header ul li a{
+    display: block;
+    padding: 21px;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    background: #2d8a8a;
+    transition: 1.0s;
+}
+
+header .menu-toggle{
+    display: none;
+}
+
+/*Media Queries - Responsiveness*/
+
+@media only screen and (max-width: 750px) {
+    header {
+        position: relative;
+    }
+    header ul {
+        width: 100%;
+        background: #57acac;
+        max-height: 0px;
+        overflow: hidden;
+    }
+    .showing {
+        max-height: 100em;
+    }
+    header ul li {
+        width: 100%;   
+    }
+    header ul li ul {
+        position: static;
+        display: block;
+        width: 100%;
+    }
+    header ul li ul li a {
+        padding: 10px;
+        background: #57acac; /*color of dash/logout bgd*/
+        color: white;
+        padding-left: 50px;
+    }
+    header ul li ul li a:hover {/* hover color for dash/logout */
+        background: #2d8a8a;
+    }
+    header ul li ul li a.logout{
+        color: red;
+    }
+    header .menu-toggle{
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 1.9em;
+    }
+    header .logo{
+        margin-left: .5em;
+    }        
+}
