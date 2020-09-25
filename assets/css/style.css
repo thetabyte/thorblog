@@ -9,6 +9,17 @@ body{
     font-family: 'lora';
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'lora', sans-serif;
+    color: #444;
+    margin: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 header{
     background: #5da7a7;
     height: 66px;
@@ -54,6 +65,7 @@ header ul li ul {
     left: 0px; /*added this to help with putting dashboard dropdown in line see html comment*/
     width: 180px;
     display: none;
+    z-index: 88888; /* higher z-idex to make sure the dropdown doesnt disappear behind the carousel*/
 }
 
 header ul li:hover ul {
@@ -92,6 +104,65 @@ header ul li a:hover {
 
 header .menu-toggle{
     display: none;
+}
+
+.page-wrapper a:hover {
+    color: lightblue;
+}
+
+/*Post-Slider*/
+
+.post-slider{
+    position: relative;
+}
+.post-slider .slider-title {
+    text-align: center;
+    margin: 30px auto;
+}
+.post-slider .next {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    font-size: 2em;
+    color: aqua;
+    cursor: pointer;
+
+}
+.post-slider .prev {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    font-size: 2em;
+    color: aqua;
+    cursor: pointer;
+}
+.post-slider .post-wrapper {
+    width: 84%;
+    height: 350px;
+    margin: 0px auto; /*auto ensures horizontally centralized wrapper div*/
+    overflow: hidden;
+    padding: 10px 0px 10px 0px;
+}
+.post-slider .post-wrapper .post {
+    height: 330px;
+    width: 300px;
+    margin: 0px 10px;
+    display: inline-block;
+    background: white;
+    border-radius: 5px; /* place for image isnt showing round border so edit image b-radius*/
+    box-shadow: 1rem 1rem 1rem -1rem #a0a0a033;
+}
+
+.post-slider .post-wrapper .post .post-info {
+    height: 130px;
+    padding: 0px 5px;
+}
+
+.post-slider .post-wrapper .post .slider-image {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 /*Media Queries - Responsiveness*/
