@@ -39,6 +39,22 @@ a {
     background: red;
 }
 
+.text-input {
+    padding: .7rem 1rem;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    color: #444;
+    line-height: 1.5rem;
+    font-weight: 1.2em;
+    font-family: 'lora' sans-serif;
+
+
+
+}
+
 header{
     background: #5da7a7;
     height: 66px;
@@ -243,8 +259,43 @@ header .menu-toggle{
     width: 30%;
     float: left;
     height: 300px;
-    border: 1px dashed greenyellow;
+
  /*content line is not expanded(0 height) because floating causes detachment from normal doc flow so nothing inside, solved using clearfix class*/   
+}
+
+.content .sidebar .section {
+    background: whitesmoke;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.content .sidebar .section .section-titles {
+    margin: 10px 0px 10px 0px;
+}
+
+.content .sidebar .section.search {
+    margin-top: 80px;
+}  /*section and search arent separted by a space after the dot because they are on same element*/
+
+.content .sidebar .section.topics ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    border-top: 1px solid #e0e0e0; /*border contains the whole UL so leaving only the top styled solid at 1px gives teh apps. of a straight line  */
+}
+
+.content .sidebar .section.topics ul li a {
+    display: block;
+    padding: 15px 0px 15px 0px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.4s;
+    color: grey;
+}
+
+.content .sidebar .section.topics ul li a:hover {
+    padding-left: 20px; /*consider adding box shadow to make it pop*/
+    transition: all 0.5s;
 }
 
 
