@@ -33,7 +33,7 @@ a {
     color: white;
     border: 1px solid transparent;
     border-radius: .25rem;
-    transition: all .4s; /*added transition to btn:hover and btn make light green fade in and out*/
+    transition: all .4s; /*added transition to btn:hover and btn to make light green fade in and out*/
 }
 
 .btn-big {
