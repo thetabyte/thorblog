@@ -226,6 +226,17 @@ header .menu-toggle{
     float: left;
 }
 
+.content .main-content.single { /*no space btwn because they are same element class and not child element class*/
+    background: whitesmoke;
+    padding: 20px 50px;
+    border-radius: 5px;
+}
+
+.content .main-content.single .post-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .content .main-content .post {
     width: 95%;
     height: 270px;
@@ -233,6 +244,19 @@ header .menu-toggle{
     border-radius: 5px;
     background: whitesmoke;
     position: relative;
+}
+
+.content .popular .post {
+    border-top: 1px solid rgb(219, 216, 216);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.content .popular .post img {
+    height: 60px;
+    width: 75px;
+    float: left;
+    margin-right: 10px;
 }
 
 .content .main-content .post .read-more {
@@ -275,6 +299,11 @@ header .menu-toggle{
  /*content line is not expanded(0 height) because floating causes detachment from normal doc flow so nothing inside, solved using clearfix class*/   
 }
 
+.content .sidebar.single {
+    padding: 0px 10px;
+
+}
+
 .content .sidebar .section {
     background: whitesmoke;
     padding: 20px;
@@ -282,7 +311,7 @@ header .menu-toggle{
     margin-bottom: 20px;
 }
 
-.content .sidebar .section .section-titles {
+.content .sidebar .section .section-title {
     margin: 10px 0px 10px 0px;
 }
 
