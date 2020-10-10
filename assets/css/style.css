@@ -34,6 +34,8 @@ a {
     border: 1px solid transparent;
     border-radius: .25rem;
     transition: all .4s; /*added transition to btn:hover and btn to make light green fade in and out*/
+    font-size: 1.08em;
+    font-family: 'karla', sans-serif;
 }
 
 .btn-big {
@@ -337,6 +339,32 @@ header .menu-toggle{
 .content .sidebar .section.topics ul li a:hover {
     padding-left: 20px; /*consider adding box shadow to make it pop*/
     transition: all 0.5s;
+}
+
+/*Authetication Styling*/
+
+.auth-content {
+    width: 30%;
+    margin: 50px auto;
+    padding: 20px;
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+.auth-content .form-title {
+    text-align: center;
+}
+
+.auth-content form div {
+    margin-bottom: 10px;
+}
+
+.auth-content form p {
+    text-align: center;
+}
+
+.auth-content form p a {
+    text-decoration: underline;
 }
 
 /*FOOTER*/
