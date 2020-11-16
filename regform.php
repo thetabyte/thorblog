@@ -1,4 +1,5 @@
 <?php include("path.php"); ?>
+<?php include(ROOT_PATH . "/app/controllers/users.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
 
     <div class="auth-content">
         
-        <form action="regform.html" method="post">
+        <form action="regform.php" method="post">
             <h2 class="form-title">Create Account</h2>
 
             <!--<div class="msg success error">
