@@ -7,19 +7,24 @@
             <li><a href="<?php echo BASE_URL . '/index.php' ?>">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
-            <!--<li><a href="#"></a>Sign Up</li>
-            <li><a href="#"></a>Login</li>-->
-            
-            <li>
-                <a href="#">
-                    <i class="fa fa-user"></i>
-                    Ilsa Faust <!--Locked in user, above buttons commented out to focus on styling user item-->
-                    <i class="fa fa-chevron-down" style="font-size: .8em;"></i> <!--styling ideally should be in style sheet target ul list and place styling-->
-                </a> 
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#" class="logout">Logout</a></li>
-                </ul>
-            </li> 
+
+            <?php if (isset($_SESSION['id'])): ?>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user"></i>
+                        <?php echo $_SESSION['username']; ?> <!--Locked in user, above buttons commented out to focus on styling user item-->
+                        <i class="fa fa-chevron-down" style="font-size: .8em;"></i> <!--styling ideally should be in style sheet target ul list and place styling-->
+                    </a> 
+                    <ul>
+                        <?php if($_SESSION['admin']): ?>
+                        <li><a href="<?php echo BASE_URL . '/admin/dashboard.php' ?>">Dashboard</a></li>
+                        <?php endif; ?>        
+                        <li><a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout">Logout</a></li>
+                    </ul>
+                </li>
+            <?php else: ?>
+                <li><a href="<?php echo BASE_URL . '/regform.php' ?>">Sign Up</a></li>
+                <li><a href="<?php echo BASE_URL . '/login.php' ?>">Login</a></li>
+            <?php endif; ?>
         </ul>
     </header>

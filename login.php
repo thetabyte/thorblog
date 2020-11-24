@@ -1,4 +1,5 @@
 <?php include("path.php"); ?>
+<?php include(ROOT_PATH . "/app/controllers/users.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,9 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital@1&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="assets/css/style.css">
     
-
-    <title>Login</title>
+    <title>BifrostDaily | Login</title>
 </head>
 <body>
     
@@ -21,18 +20,19 @@
 
     <div class="auth-content">
         
-        <form action="login.html" method="post">
+        <form action="login.php" method="post">
             <h2 class="form-title">Login</h2>
+            <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
             <div>
                 <label>Username</label>
-                <input type="text" name="username" class="text-input">
+                <input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
             </div>
             <div>
                 <label>Password</label>
-                <input type="password" name="password" class="text-input">
+                <input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
             </div>
             <div>
-                <button type="submit" name="register-btn" class="btn btn-big">Login</button>
+                <button type="submit" name="login-btn" class="btn btn-big">Login</button>
             </div>
             <p>Or <a href="<?php echo BASE_URL . '/regform.php' ?>">Create Account</a></p>
         </form>
