@@ -1,3 +1,4 @@
+<?php include('../../path.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,50 +10,26 @@
         <link href="https://fonts.googleapis.com/css2?family=Karla:ital@1&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
 
 
-        <link rel="stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="../../assets/css/style.css">
 
         <!--Admin CSS-->
-        <link rel="stylesheet" href="../../css/admin.css">
+        <link rel="stylesheet" href="../../assets/css/admin.css">
         
 
         <title>Admin-BifrostDaily | Manage Posts</title>
     </head>
     <body>
-        <header>
-            <div class="logo">
-                <h1 class="logo-text"><span>Bifrost</span>Daily</h1>
-            </div>
-            <i class="fa fa-bars menu-toggle"></i>   
-            <ul class="nav">
-                
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user"></i>
-                        Ilsa Faust <!--Locked in user, above buttons commented out to focus on styling user item-->
-                        <i class="fa fa-chevron-down" style="font-size: .8em;"></i> <!--styling ideally should be in style sheet target ul list and place styling-->
-                    </a> 
-                    <ul>
-                        <li><a href="#" class="logout">Logout</a></li>
-                    </ul>
-                </li> 
-            </ul>
-        </header>
+        <?php include(ROOT_PATH . '/app/includes/adminHeader.php'); ?>
 
         <!--Admin page wrapper-->
         <div class="admin-wrapper">
 
-            <div class="left-sidebar">
-                <ul>
-                    <li><a href="index.html">Manage Posts</a></li><!--figure out if its bloghtml or indexhtml liking -->
-                    <li><a href="../users/index.html">Manage Users</a></li>
-                    <li><a href="../topics/index.html">Manage Topics</a></li>
-                </ul>
-            </div>
+            <?php include(ROOT_PATH . '/app/includes/adminSidebar.php'); ?>
 
             <div class="admin-content">
                 <div class="button-group">
-                    <a href="create.html" class="btn btn-big">Add Post</a>
-                    <a href="index.html" class="btn btn-big">Manage Posts</a>
+                    <a href="create.php" class="btn btn-big">Add Post</a>
+                    <a href="index.php" class="btn btn-big">Manage Posts</a>
                 </div>
 
                 <div class="content">
@@ -91,10 +68,15 @@
         <!--/wrapper-->
 
         <!--JQUERY-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <!--ckeditor-->
+        <script 
+            src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>    
         <!--script-->
-        <script src="../../js/script.js"></script>
+        <script src="../../assets/js/script.js"></script>
+
+
 
     </body>
 </html>
