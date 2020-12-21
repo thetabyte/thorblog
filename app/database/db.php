@@ -75,7 +75,7 @@ function selectOne($table, $conditions)
 }
 
 
-//Create fct
+//Create fctn
 
 function create($table, $data)
 {
