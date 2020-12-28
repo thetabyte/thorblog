@@ -27,6 +27,7 @@ function userValidn($user)
 
     return $errors;
 }
+
 function userLoginValidn($user)
 {
     $errors = array();

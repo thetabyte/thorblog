@@ -1,4 +1,5 @@
 <?php include('../../path.php'); ?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php");?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,14 +38,15 @@
 
                     <h2 class="page-title">Edit Posts</h2>
 
-                    <form action="create.html" method="post">
+                    <form action="edit.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $id ?>">
                         <div>
                             <label>Title</label>
-                            <input type="text" name="title" class="text-input">
+                            <input type="text" name="title" value="<?php echo $title ?>" class="text-input">
                         </div>
                         <div>
                             <label>Body</label>
-                            <textarea name="body" id="body"></textarea>
+                            <textarea name="body" id="body"><?php echo $body ?></textarea>
                         </div>
                         <div>
                             <label>Image</label>
@@ -52,14 +54,36 @@
                         </div>
                         <div>
                             <label>Topic</label>
-                            <select name="topic" class="text-input">
-                                <option value="Life Lessons">Life Lessons</option>
-                                <option value="Memories">Memories</option>
-                                <option value="Poetry">Poetry</option>
+                            <select name="topic_id" class="text-input">
+                                <option value=""></option>
+
+                                <?php foreach ($topics as $key => $topic) { ?>  <!--obsv: braces stands in for endforeach and semicolon after topic, for some reason, stops code from executing next line to show all topics from DB-->
+                                    
+                                    <?php if (!empty($topic_id) && $topic_id == $topic['id']): ?> <!--exclamation mark ensures topics persist after validation check-->
+                                        <option selected value="<?php echo $topic['id'] ?>"><?php echo $topic['name'] ?></option>                                    
+                                    <?php else: ?>
+                                        <option value="<?php echo $topic['id'] ?>"><?php echo $topic['name'] ?></option>                                        
+                                    <?php endif; ?>
+                                                       
+                                <?php } ?>
+
                             </select>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-big">Update</button>
+                            <?php if (empty($published)): ?>
+                                <label >
+                                    <input type="checkbox" name="published">
+                                    Publish
+                                </label>
+                                
+                            <?php else: ?>
+                                <input type="checkbox" name="published" checked>
+                                Publish    
+                            <?php endif; ?>
+
+                        </div>
+                        <div>
+                            <button type="submit" name="update-post" class="btn btn-big">Update</button>
                         </div>
                     </form>
 

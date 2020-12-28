@@ -15,3 +15,4 @@ function topicValidn($topic)
 
     return $errors;
 }
+// cant update a record because error is returned and i have to change the entire record to update when i want to capitalize just a character for the same record.
