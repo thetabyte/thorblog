@@ -1,4 +1,5 @@
 <?php include('../../path.php'); ?>
+<?php include(ROOT_PATH . "/app/controllers/users.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,11 +33,11 @@
                 <a href="index.php" class="btn btn-big">Manage Users</a>
             </div>
 
-
             <div class="content">
 
                 <h2 class="page-title">Manage Users</h2>
 
+                <?php include(ROOT_PATH . "/app/includes/msg.php");?>
 
                 <table>
                     <thead>
@@ -45,21 +46,18 @@
                         <th>Role</th>
                         <th colspan="2">Action</th>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>MasterChief</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>UncleSam</td>
-                            <td>Author</td>
-                            <td><a href="#" class="edit">edit</a></td>
-                            <td><a href="#" class="delete">delete</a></td>
-                        </tr>
+                        <?php foreach ($admin_users as $key => $user) { ?> <!--semicolon limits the fetched items to only the last entered item in DB--> 
+                            <tr>
+                                <td><?php echo $key + 1; ?></td>
+                                <td><?php echo $user['username']; ?></td>
+                                <td><?php echo $user['email']; ?></td>
+                                <td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">edit</a></td>
+                                <td><a href="index.php?delete_id=<?php echo $user['id']; ?>" class="delete">delete</a></td>
+                            </tr>
+                        <?php } ?>
+
                     </tbody>
                 </table>
             </div>

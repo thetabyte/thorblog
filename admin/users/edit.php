@@ -1,4 +1,5 @@
 <?php include('../../path.php'); ?>
+<?php include(ROOT_PATH . "/app/controllers/users.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,37 +36,43 @@
                 <div class="content">
 
                     <h2 class="page-title">Edit User</h2>
+                    <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
 
-                    <form action="create.html" method="post">
-                        
-
+                    <form action="edit.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <div>
                             <label>Username</label>
-                            <input type="text" name="username" class="text-input">
+                            <input type="text" name="username" value="<?php echo $username; ?>" class="text-input">
                         </div>
                         <div>
                             <label>Email</label>
-                            <input type="email" name="email" class="text-input">
+                            <input type="email" name="email" value="<?php echo $email; ?>" class="text-input">
                         </div>
                         <div>
                             <label>Password</label>
-                            <input type="password" name="password" class="text-input">
+                            <input type="password" name="password" value="<?php echo $password; ?>" class="text-input">
                         </div>
                         <div>
                             <label>Confirm Password</label>
-                            <input type="password" name="passConf" class="text-input">
+                            <input type="password" name="passConf" value="<?php echo $passConf; ?>" class="text-input">
                         </div>
 
                         <div>
-                            <label>Role</label>
-                            <select name="topic" class="text-input">
-                                <option value="Life Lessons">Admin</option>
-                                <option value="Memories">Author</option>
-                            </select>
+                            <?php if (isset($admin) && $admin == 1): ?>
+                                <label>
+                                    <input type="checkbox" name="admin" checked>
+                                    Admin
+                                </label>                            
+                            <?php else: ?>
+                                <label>
+                                    <input type="checkbox" name="admin">
+                                    Admin
+                                </label>                            
+                            <?php endif; ?>
+                                
                         </div>
-
                         <div>
-                            <button type="submit" class="btn btn-big">Update</button>
+                            <button type="submit" name="update-user" class="btn btn-big">Update</button>
                         </div>
                     </form>
                 </div>
