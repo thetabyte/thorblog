@@ -20,9 +20,20 @@ function userValidn($user)
         array_push($errors, 'Password mismatch');
     }
 
+    // $existingUser = selectOne('users', ['email' => $user['email']]);
+    // if ($existingUser){
+    //     array_push($errors, 'Email already exists');
+    // }
+
     $existingUser = selectOne('users', ['email' => $user['email']]);
     if ($existingUser){
-        array_push($errors, 'Email already exists');
+        if (isset($user['update-user']) && $existingUser['id'] != $user['id']) {
+            array_push($errors, 'A user with that email already exists');        
+        }
+        
+        if (isset($user['add-user'])) {
+            array_push($errors, 'A user with that email already exists');
+        }
     }
 
     return $errors;

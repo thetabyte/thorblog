@@ -19,6 +19,8 @@ if (isset($_POST['add-topic'])) {
 
     if (count($errors) === 0) {
         unset($_POST['add-topic']);
+        $description = htmlentities($_POST['description']); //attempt to test encryption not working yet.
+
         $topic_id = create($table, $_POST);
         $_SESSION['message'] = 'Topic created successfully';
         $_SESSION['type'] = 'success';
