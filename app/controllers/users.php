@@ -6,10 +6,11 @@
 #the above session function goes in the db.php because session is used severally by files that use db so start once in db then include
 
 include(ROOT_PATH . "/app/database/db.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 include(ROOT_PATH . "/app/helpers/validateUser.php");
 
 $table = 'users';
-$admin_users = selectAll($table, ['admin' => 1]);
+$admin_users = selectAll($table); //['admin' => 1]);
 
 $errors = array();
 $id = '';
@@ -68,6 +69,7 @@ if (isset($_POST['register-btn']) || isset($_POST['create-admin'])) {
 }
 
 if (isset($_POST['update-user'])) {
+    adminOnly();
     $errors = userValidn($_POST);
 
     if (count($errors) === 0) {
@@ -96,7 +98,8 @@ if (isset($_GET['id'])) {
     $user = selectOne($table, ['id' => $_GET['id']]);
     $id = $user['id'];
     $username = $user['username'];
-    $admin = isset($user['admin']) ? 1 : 0;
+    $admin = $user['admin']; //== 1 ? 1 : 0; i choose to leave this out but it is the same thing
+    //if admin prop. is 1 we give it 1 otherwise it's 0 so box is left unchecked instead.
     $email = $user['email'];
 }
 
@@ -121,6 +124,7 @@ if (isset($_POST['login-btn'])) {
 }
 
 if (isset($_GET['delete_id'])) {
+    adminOnly();
     $count = delete($table, $_GET['delete_id']);
     $_SESSION['message'] = "Admin user deleted";
     $_SESSION['type'] = "success";
