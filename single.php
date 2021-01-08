@@ -1,4 +1,14 @@
 <?php include("path.php"); ?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php"); 
+
+if (isset($_GET['id'])) {
+    $post = selectOne('posts', ['id' => $_GET['id']]);
+}
+
+$topics = selectAll('topics');
+$posts = selectAll('posts', ['published' =>1]);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +23,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     
 
-    <title>Single post</title>
+    <title><?php echo $post['title']; ?> | BifrostDaily</title> <!--for seo-->
 </head>
 <body>
     
@@ -29,28 +39,9 @@
             <!--main content wrapper-->
             <div class="main-content-wrap">
                 <div class="main-content single">
-                    <h1 class="post-title">This is the title of the post</h1>
+                    <h1 class="post-title"><?php echo $post['title'];?></h1>
                     <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur dolorem aut non molestias, natus soluta.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque minus aliquid repudiandae est quam, ullam suscipit incidunt voluptas vitae inventore rem esse necessitatibus facere soluta tenetur corporis dolorum natus.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias ullam illum officiis dolorum impedit eos quos debitis, animi ducimus repellendus magni iusto ipsa maxime quam. Culpa accusamus incidunt modi consectetur animi totam, neque ad, adipisci facere, tenetur impedit nostrum?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, nam!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur dolorem aut non molestias, natus soluta.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque minus aliquid repudiandae est quam, ullam suscipit incidunt voluptas vitae inventore rem esse necessitatibus facere soluta tenetur corporis dolorum natus.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias ullam illum officiis dolorum impedit eos quos debitis, animi ducimus repellendus magni iusto ipsa maxime quam. Culpa accusamus incidunt modi consectetur animi totam, neque ad, adipisci facere, tenetur impedit nostrum?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, nam!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur dolorem aut non molestias, natus soluta.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque minus aliquid repudiandae est quam, ullam suscipit incidunt voluptas vitae inventore rem esse necessitatibus facere soluta tenetur corporis dolorum natus.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias ullam illum officiis dolorum impedit eos quos debitis, animi ducimus repellendus magni iusto ipsa maxime quam. Culpa accusamus incidunt modi consectetur animi totam, neque ad, adipisci facere, tenetur impedit nostrum?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, nam!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur dolorem aut non molestias, natus soluta.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque minus aliquid repudiandae est quam, ullam suscipit incidunt voluptas vitae inventore rem esse necessitatibus facere soluta tenetur corporis dolorum natus.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias ullam illum officiis dolorum impedit eos quos debitis, animi ducimus repellendus magni iusto ipsa maxime quam. Culpa accusamus incidunt modi consectetur animi totam, neque ad, adipisci facere, tenetur impedit nostrum?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, nam!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur dolorem aut non molestias, natus soluta.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum itaque minus aliquid repudiandae est quam, ullam suscipit incidunt voluptas vitae inventore rem esse necessitatibus facere soluta tenetur corporis dolorum natus.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi molestias ullam illum officiis dolorum impedit eos quos debitis, animi ducimus repellendus magni iusto ipsa maxime quam. Culpa accusamus incidunt modi consectetur animi totam, neque ad, adipisci facere, tenetur impedit nostrum?</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, nam!</p>
+                        <?php echo html_entity_decode($post['body']); ?>
                     </div>
                 </div>
             </div>
@@ -60,43 +51,26 @@
             <div class="sidebar single">
                 <div class="section popular">
                     <h2 class="section-title">Popular</h2>
+                    <?php foreach ($posts as $p) { ?>
+                        <div class="post clearfix">
+                            <img src="<?php echo BASE_URL . '/assets/images/' . $p['image']; ?>" alt="">
+                            <a href="" class="title">
+                                <h4><?php echo $p['title']; ?></h4>
+                            </a>
+                        </div>
+                        
+                    <?php } ?>
 
-                    <div class="post clearfix">
-                        <img src="assets/images/bdblog.jpg" alt="">
-                        <a href="" class="title">
-                            <h4>Orion's never ending despair</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="assets/images/bdblog.jpg" alt="">
-                        <a href="" class="title">
-                            <h4>Orion's never ending despair</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="assets/images/bdblog.jpg" alt="">
-                        <a href="" class="title">
-                            <h4>Orion's never ending despair</h4>
-                        </a>
-                    </div>
-                    <div class="post clearfix">
-                        <img src="assets/images/bdblog.jpg" alt="">
-                        <a href="" class="title">
-                            <h4>Orion's never ending despair</h4>
-                        </a>
-                    </div>
+                    
                 </div>
 
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li><a href="#">Poems</a></li>
-                        <li><a href="#">Quotes</a></li>
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Biography</a></li>
-                        <li><a href="#">Motivation</a></li>
-                        <li><a href="#">Inspiration</a></li>
-                        <li><a href="#">Life Lessons</a></li>
+                        <?php foreach ($topics as $topic) { ?>
+                            <li><a href="<?php echo BASE_URL . '/index.php?top_id=' . $topic['id'] . '&name=' . $topic['name'] ?>"><?php echo $topic['name']; ?></a></li>
+                        <?php } ?>
+                        
                     </ul>
                 </div>
 

@@ -131,6 +131,45 @@ function delete($table, $id)
     return $stmt->affected_rows;
 }
 
+function getPublishedPosts()
+{
+    global $conn;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published =?"; //p.published/published = 1 works too but instead of passing 1 i made it a parameter '?' then specify in conditions in $stmt execQuery
+
+    $stmt = executeQuery($sql, ['published' =>1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+}
+
+function getPostTopicId($topic_id)
+{
+    global $conn;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published =? AND topic_id=?"; //p.published/published = 1 works too but instead of passing 1 i made it a parameter '?' then specify in conditions in $stmt execQuery
+
+    $stmt = executeQuery($sql, ['published' =>1, 'topic_id' => $topic_id]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+}
+
+function searchPosts($term)
+{
+    $match = '%' . $term . '%';
+    global $conn;
+    $sql = "SELECT
+                p.*, u.username
+            FROM posts AS p
+            JOIN users AS u
+            ON p.user_id=u.id 
+            WHERE p.published =?
+            AND p.title LIKE ? OR p.body LIKE ?"; 
+            //'?mrks param' used instead of '% encased ?mrk param' or '$match' var because of sql injection via query 
+            //p.published/published = 1 works too but instead of passing 1 i made it a parameter '?' then specify in conditions in $stmt execQuery
+
+    $stmt = executeQuery($sql, ['published' =>1, 'title' => $match, 'body' => $match]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+}
+
 // $data = [
 //     'username' => 'Sasha fierce',
 //     'admin' => 1,
