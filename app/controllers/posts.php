@@ -1,6 +1,7 @@
 <?php
 
 include(ROOT_PATH . "/app/database/db.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 include(ROOT_PATH . "/app/helpers/validatePost.php");
 
 $table = 'posts';
@@ -26,6 +27,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_GET['delete_id'])) {
+    adminOnly();
     $count = delete($table, $_GET['delete_id']);
     $_SESSION ['message'] = "Post deleted successfully";
     $_SESSION ['type'] = "success";
@@ -34,6 +36,7 @@ if (isset($_GET['delete_id'])) {
 }
 
 if (isset($_GET['published']) && isset($_GET['p_id'])) {
+    adminOnly();
     $published = $_GET['published'];
     $p_id = $_GET['p_id'];
     $count = update($table, $p_id, ['published' => $published]); //count returnss the number of affected rows.
@@ -44,6 +47,7 @@ if (isset($_GET['published']) && isset($_GET['p_id'])) {
 }
 
 if (isset($_POST['add-post'])) {
+    adminOnly();
     $errors = postValidn($_POST);
 
     if (!empty($_FILES['image']['name'])) {
@@ -82,6 +86,7 @@ if (isset($_POST['add-post'])) {
 }
 
 if (isset($_POST['update-post'])) {
+    adminOnly();
     $errors = postValidn($_POST);
     if (!empty($_FILES['image']['name'])) {
         $image_name = time() . '_' . $_FILES['image']['name'];
